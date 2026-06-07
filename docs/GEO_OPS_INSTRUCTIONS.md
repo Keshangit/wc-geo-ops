@@ -51,4 +51,18 @@ curl -s -X POST http://127.0.0.1:8000/v1/audits/quick \
   -d '{"url":"https://example.com/"}' | python -m json.tool
 ```
 
+## Railway deploy
+
+Repo includes [`railway.toml`](../railway.toml) and [`requirements-deploy.txt`](../requirements-deploy.txt).
+
+1. Connect GitHub repo to Railway; config-as-code applies build/start automatically.
+2. **Variables:** `OPS_API_KEY`, `REDIS_URL`, `ANTHROPIC_API_KEY`
+3. **Networking:** use Railway’s default `$PORT` (start command already uses `$PORT`).
+4. **Worker:** add a second Railway service with start command `python -m api.workers.full_worker` (same env + Redis).
+
+If dashboard overrides exist, clear custom build/start commands so `railway.toml` wins, or set:
+
+- Build: `pip install -r requirements-deploy.txt`
+- Start: `python -m uvicorn api.main:app --host 0.0.0.0 --port $PORT`
+
 WC GEO integration checklist: [WC_GEO_INTEGRATION.md](WC_GEO_INTEGRATION.md)
