@@ -2,4 +2,4 @@
 cmds = ["python -m pip install -r requirements-deploy.txt"]
 
 [start]
-cmd = "python -m uvicorn api.main:app --host 0.0.0.0 --port $PORT"
+cmd = "python -m api"

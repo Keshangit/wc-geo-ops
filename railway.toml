@@ -3,7 +3,8 @@ builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-# Use Dockerfile CMD (scripts/start-api.sh) — do not set $PORT here; Railway passes it literally without a shell
+# No $PORT in CLI — api/__main__.py reads os.environ["PORT"]
+startCommand = "python -m api"
 healthcheckPath = "/health"
 healthcheckTimeout = 120
 restartPolicyType = "ON_FAILURE"

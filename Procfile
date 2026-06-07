@@ -1,1 +1,1 @@
-web: ./scripts/start-api.sh
+web: python -m api

@@ -17,4 +17,4 @@ ENV PORT=8000
 
 EXPOSE 8000
 
-CMD ["./scripts/start-api.sh"]
+CMD ["python", "-m", "api"]
