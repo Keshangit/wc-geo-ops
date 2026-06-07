@@ -1,0 +1,19 @@
+{
+  "url": "https://example.com/",
+  "domain": "example.com",
+  "score": {
+    "overall": 0,
+    "breakdown": {
+      "technical_geo": 0,
+      "citability": 0,
+      "schema": 0
+    },
+    "tier": "critical"
+  },
+  "summary": {
+    "tier": "free",
+    "metrics": {},
+    "quick_wins": [],
+    "insights": []
+  }
+}

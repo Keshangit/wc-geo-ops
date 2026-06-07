@@ -32,6 +32,27 @@
 
 ---
 
+## GEO Operations API (WC GEO backend)
+
+HTTP API for the WC GEO PHP app: sync quick audits and async full audits (Redis + RQ + Anthropic).
+
+| Doc | Purpose |
+|-----|---------|
+| [GEO_OPERATIONS_BACKEND.md](GEO_OPERATIONS_BACKEND.md) | API JSON contract |
+| [docs/GEO_OPS_INSTRUCTIONS.md](docs/GEO_OPS_INSTRUCTIONS.md) | Local setup and curl tests |
+| [docs/WC_GEO_INTEGRATION.md](docs/WC_GEO_INTEGRATION.md) | PHP client integration checklist |
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt -r api/requirements.txt
+cp .env.example .env   # set OPS_API_KEY
+uvicorn api.main:app --reload --port 8000
+```
+
+Requires **Python 3.10+** for production; `docker compose up` uses Python 3.12.
+
+---
+
 ## Quick Start
 
 ### One-Command Install (macOS/Linux)
