@@ -1,6 +1,6 @@
 # GEO Operations API — Frontend Integration Guide
 
-Reference for building the WC GEO dashboard and any client UI that displays audit results.
+Reference for building the **Next.js + Supabase** dashboard (or any BFF) that displays audit results. See [NEXTJS_SUPABASE_APP.md](NEXTJS_SUPABASE_APP.md) for full app architecture.
 
 ---
 
@@ -22,11 +22,11 @@ Reference for building the WC GEO dashboard and any client UI that displays audi
 
 | Rule | Detail |
 |------|--------|
-| **Never call Ops API from the browser with the API key** | `OPS_API_KEY` must stay on the server (WC GEO PHP / BFF). Exposing it in frontend JS is a credential leak. |
-| **Recommended architecture** | Browser → **WC GEO backend** (`/api/...`) → Ops API with `Authorization: Bearer <OPS_API_KEY>` |
-| **CORS** | Ops API is intended for server-to-server calls. If you must call from a browser during dev, proxy through your backend. |
+| **Never call Ops API from the browser with the API key** | `OPS_API_KEY` must stay on the server (Next.js Route Handlers / Server Actions). Exposing it in frontend JS is a credential leak. |
+| **Recommended architecture** | Browser → **Next.js** (`/api/audits/*`) → Ops API with `Authorization: Bearer <OPS_API_KEY>` → persist in **Supabase** |
+| **CORS** | Ops API is server-to-server only. Always proxy through Next.js. |
 
-Frontend developers integrate against **WC GEO’s API layer**, which wraps the endpoints below. This document describes the **Ops API contract** those wrappers should mirror.
+This document describes the **Ops API contract**. Your Next.js app wraps these endpoints and stores results in Supabase `audits` (see [NEXTJS_SUPABASE_APP.md](NEXTJS_SUPABASE_APP.md)).
 
 ---
 

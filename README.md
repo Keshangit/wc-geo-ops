@@ -40,6 +40,7 @@ HTTP API for the WC GEO PHP app: sync quick audits and async full audits (Redis 
 |-----|---------|
 | [GEO_OPERATIONS_BACKEND.md](GEO_OPERATIONS_BACKEND.md) | API JSON contract |
 | [docs/API_FRONTEND.md](docs/API_FRONTEND.md) | **Frontend integration guide** (endpoints, types, UI flows) |
+| [docs/NEXTJS_SUPABASE_APP.md](docs/NEXTJS_SUPABASE_APP.md) | **Next.js + Supabase app** architecture & schema |
 | [docs/GEO_OPS_INSTRUCTIONS.md](docs/GEO_OPS_INSTRUCTIONS.md) | Local setup and curl tests |
 | [docs/WC_GEO_INTEGRATION.md](docs/WC_GEO_INTEGRATION.md) | PHP client integration checklist |
 
