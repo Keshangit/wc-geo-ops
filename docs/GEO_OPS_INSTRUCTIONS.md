@@ -60,6 +60,8 @@ Repo includes [`railway.toml`](../railway.toml), [`Dockerfile`](../Dockerfile), 
 3. **Networking:** use Railway’s default `$PORT` (start command uses `$PORT`).
 4. **Worker:** add a second Railway service with start command `python -m api.workers.full_worker` (same env + Redis).
 
-Clear any manual **Custom Build Command** in Railway Settings so the Dockerfile build is used.
+Clear any manual **Custom Build Command** or **Custom Start Command** in Railway Settings — the Dockerfile runs `./scripts/start-api.sh`, which reads `$PORT` correctly.
+
+**Worker service start command:** `./scripts/start-worker.sh`
 
 WC GEO integration checklist: [WC_GEO_INTEGRATION.md](WC_GEO_INTEGRATION.md)
