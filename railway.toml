@@ -2,10 +2,5 @@
 builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
-[deploy]
-# No $PORT in CLI — api/__main__.py reads os.environ["PORT"]
-startCommand = "python -m api"
-healthcheckPath = "/health"
-healthcheckTimeout = 120
-restartPolicyType = "ON_FAILURE"
-restartPolicyMaxRetries = 5
+# Deploy settings (start command, health check) are configured per-service
+# in the Railway dashboard — see RAILWAY.md.

@@ -53,15 +53,13 @@ curl -s -X POST http://127.0.0.1:8000/v1/audits/quick \
 
 ## Railway deploy
 
-Repo includes [`railway.toml`](../railway.toml), [`Dockerfile`](../Dockerfile), and [`requirements-deploy.txt`](../requirements-deploy.txt).
+See **[RAILWAY.md](../RAILWAY.md)** for per-service start commands and health checks.
 
-1. Connect GitHub repo to Railway; builds use the **Dockerfile** (Python 3.12 + uvicorn).
-2. **Variables:** `OPS_API_KEY`, `REDIS_URL`, `ANTHROPIC_API_KEY` (set in Railway dashboard only — never in the Dockerfile).
-3. **Networking:** use Railway’s default `$PORT` (start command uses `$PORT`).
-4. **Worker:** add a second Railway service with start command `python -m api.workers.full_worker` (same env + Redis).
+Repo includes [`railway.toml`](../railway.toml) (build only), [`Dockerfile`](../Dockerfile), and [`requirements-deploy.txt`](../requirements-deploy.txt).
 
-Clear any manual **Custom Build Command** or **Custom Start Command** in Railway Settings — the Dockerfile runs `./scripts/start-api.sh`, which reads `$PORT` correctly.
-
-**Worker service start command:** `./scripts/start-worker.sh`
+1. Connect GitHub repo to Railway; builds use the **Dockerfile** (Python 3.12).
+2. **API service:** start command `python -m api`, health check `/health`.
+3. **Worker service:** start command `python -m api.workers.full_worker`, **no** health check.
+4. **Variables (API + worker):** `OPS_API_KEY`, `REDIS_URL`, `ANTHROPIC_API_KEY`.
 
 WC GEO integration checklist: [WC_GEO_INTEGRATION.md](WC_GEO_INTEGRATION.md)
